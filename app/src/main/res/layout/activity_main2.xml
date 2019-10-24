@@ -2,12 +2,14 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundcolor">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp">
+        android:layout_margin="2dp"
+        android:background="?attr/backgroundcolor">
 
         <TextView
             android:id="@+id/title"
@@ -15,8 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="For 10 Point Grading System (CBCS)"
-            android:textColor="#111010"
-            android:textSize="23sp" />
+            android:textColor="?attr/textcolor"
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/spinner_layout"
@@ -33,12 +35,13 @@
                 android:layout_margin="5dp"
                 android:layout_weight="0.5"
                 android:text="Select University :"
-                android:textColor="#212121"
+                android:textColor="?attr/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/spinner_id"
+                style="@android:style/Widget.DeviceDefault.Light.Spinner"
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_margin="5dp"
@@ -62,7 +65,7 @@
                 android:layout_margin="5dp"
                 android:layout_weight="0.5"
                 android:text="Enter CGPA :"
-                android:textColor="#212121"
+                android:textColor="?attr/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -76,7 +79,8 @@
                 android:hint="example: 7.68"
                 android:importantForAutofill="no"
                 android:inputType="numberDecimal"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:textColor="?attr/textcolor" />
         </LinearLayout>
 
         <Button
@@ -100,7 +104,7 @@
             android:layout_below="@id/submit_button"
             android:layout_centerInParent="true"
             android:layout_margin="8dp"
-            android:background="#0F0F0F" />
+            android:background="#8F8585" />
 
         <TextView
             android:id="@+id/percentage_title"
@@ -110,7 +114,7 @@
             android:gravity="center"
             android:padding="0dp"
             android:text="Your Approximate Percentage is"
-            android:textColor="#111111"
+            android:textColor="?attr/textcolor"
             android:textSize="20sp" />
 
         <TextView
@@ -122,7 +126,7 @@
             android:gravity="center"
             android:padding="0dp"
             android:text="83.67%"
-            android:textColor="#111111"
+            android:textColor="?attr/textcolor"
             android:textSize="28sp"
             android:textStyle="bold"
             android:visibility="invisible" />
@@ -171,7 +175,7 @@
                     android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:layout_margin="0dp"
-                    android:background="#F9FCF8"
+                    android:background="?attr/shareicon"
                     android:padding="0dp"
                     android:src="@drawable/share_logo" />
 
@@ -180,7 +184,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Share this app"
-                    android:textColor="#000"
+                    android:textColor="?attr/textcolor"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -196,7 +200,7 @@
                     android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:layout_margin="0dp"
-                    android:background="#F9FCF8"
+                    android:background="?attr/shareicon"
                     android:padding="0dp"
                     android:src="@drawable/email_logo" />
 
@@ -205,7 +209,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Email Us"
-                    android:textColor="#000"
+                    android:textColor="?attr/textcolor"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -220,7 +224,7 @@
                     android:id="@+id/rate_icon"
                     android:layout_width="80dp"
                     android:layout_height="50dp"
-                    android:background="#F9FCF8"
+                    android:background="?attr/shareicon"
                     android:src="@drawable/rate_logo" />
 
                 <TextView
@@ -228,18 +232,75 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Rate this app\n5 stars"
-                    android:textColor="#000"
+                    android:textColor="?attr/textcolor"
                     android:textSize="12sp" />
             </LinearLayout>
 
 
         </LinearLayout>
 
+        <View
+            android:id="@+id/line_id2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/button_section"
+            android:layout_centerInParent="true"
+            android:layout_margin="5dp"
+            android:background="#8F8585" />
+
+        <LinearLayout
+            android:id="@+id/toggle_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/line_id2"
+            android:layout_margin="6dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enable Dark Mode"
+                android:textColor="?attr/textcolor"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/toggle_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toggle_layout2"
+                android:layout_margin="3dp"
+                android:orientation="horizontal">
+
+                <Switch
+                    android:id="@+id/switch_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:text="Night Mode   "
+                    android:textColor="?attr/textcolor"
+                    android:textSize="15sp" />
+
+                <Switch
+                    android:id="@+id/switch_id2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Amoled Dark Mode   "
+                    android:textColor="?attr/textcolor"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
         <LinearLayout
             android:id="@+id/note_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/button_section"
+            android:layout_below="@id/toggle_layout"
             android:layout_margin="6dp"
             android:background="@drawable/spinner_border"
             android:orientation="vertical">
@@ -248,8 +309,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:text="Semester Grade Point Average (SGPA) is equal to the credit index for a semester divided by the total number of credits registered by the student in that semester i.e (current semester pointer)."
-                android:textColor="#0F0E0E"
+                android:text="Semester Grade Point Average (SGPA) is your Current semester pointer."
+                android:textColor="?attr/textcolor"
                 android:textSize="15sp" />
 
             <View
@@ -263,8 +324,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:text="Cumulative Grade Point Average (CGPA) gives the sum total of credit indices of all previous semesters divied by the total number of credits registered in all semesters i.e(Average pointer of all semesters)."
-                android:textColor="#0F0E0E"
+                android:text="Cumulative Grade Point Average (CGPA) gives Average pointer of all semesters."
+                android:textColor="?attr/textcolor"
                 android:textSize="15sp" />
 
             <TextView
@@ -272,14 +333,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
                 android:text="NOTE:-Formula used for calculating percentage is as per standard conversion formula followed by respective Univeristy."
-                android:textColor="#F82626"
+                android:textColor="#FF3D00"
                 android:textSize="12sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2dp"
-                android:text="*if you find any kind of error/mistake regarding conversion formula.you can always mail me by using above button*"
+                android:text="*if you find any kind of error/mistake regarding conversion formula.you can always mail me by using above buttons*"
                 android:textColor="#1963F8"
                 android:textSize="12sp"
                 android:textStyle="italic" />

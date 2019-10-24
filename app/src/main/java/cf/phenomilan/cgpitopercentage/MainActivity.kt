@@ -2,15 +2,11 @@ package cf.phenomilan.cgpitopercentage
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -23,13 +19,58 @@ import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var spinner: Spinner
+    private lateinit var spinner: Spinner
     lateinit var result: TextView
     var percentage: Double? = null
+    private var switch: Switch? = null
+    private var switch2: Switch? = null
+    private lateinit var sharedpref: Sharedpref // for saving night mode
     private lateinit var mAdview: AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        sharedpref = Sharedpref(this)
+        if (sharedpref.loadNightMode()) {
+            setTheme(R.style.Darktheme)
+        } else if (sharedpref.loadAmoledMode()) {
+            setTheme(R.style.Amoledtheme)
+        } else {
+            setTheme(R.style.AppTheme)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
+        switch = findViewById(R.id.switch_id) //dark
+        switch2 = findViewById(R.id.switch_id2) //amoled dark
+
+        //////////for dark mode///////////
+
+        if (sharedpref.loadNightMode()) {
+            switch?.isChecked = true
+        }
+        if (sharedpref.loadAmoledMode()) {
+            switch2?.isChecked = true
+        }
+        switch?.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                switch2?.isChecked = false
+                (sharedpref.setNightMode(true))
+                reset()
+            } else {
+                (sharedpref.setNightMode(false))
+                reset()
+            }
+        }
+        switch2?.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (isChecked) {
+                switch?.isChecked = false
+                (sharedpref.setAmoledMode(true))
+                reset()
+            } else {
+                (sharedpref.setAmoledMode(false))
+                reset()
+            }
+        }
+
 
         ///////////for ads////////////////////
         MobileAds.initialize(this) {}
@@ -119,7 +160,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         email_icon.setOnClickListener {
-            val rec = "milansam360@gmail.com".toString()
+            val rec = "milansam360@gmail.com"
             val intent1 = Intent(Intent.ACTION_SEND)
             intent1.data = Uri.parse("mailto:")
             intent1.putExtra(Intent.EXTRA_EMAIL, arrayOf(rec))
@@ -144,17 +185,24 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    ///for nightmode
+    private fun reset() {
+        val intent = Intent(applicationContext, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     // private var backpressed = false
     override fun onBackPressed() {
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Are you sure to Exit?")
         builder.setCancelable(true)
         builder.setNegativeButton(
-            "No",
-            DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+            "No"
+        ) { dialog, which -> dialog.cancel() }
         builder.setPositiveButton(
-            "Yes",
-            DialogInterface.OnClickListener { dialog, which -> exit() })
+            "Yes"
+        ) { dialog, which -> exit() }
         val alertdialog = builder.create()
         alertdialog.show()
     }

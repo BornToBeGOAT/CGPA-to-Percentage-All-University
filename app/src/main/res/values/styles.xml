@@ -1,13 +1,47 @@
+<!--suppress AndroidDomInspection -->
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- Day mode application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#1963F8</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="backgroundcolor">#ffffff</item>
+        <item name="textcolor">#000</item>
+        <item name="tintcolor">#000</item>
+        <item name="shareicon">#fff</item>
+        <item name="spinnerboder">#1111</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
+    <!-- Night mode application theme. -->
+    <style name="Darktheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#303030</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="backgroundcolor">#303030</item>
+        <item name="textcolor">#F0E9E9</item>
+        <item name="tintcolor">#F0E9E9</item>
+        <item name="shareicon">#303030</item>
+        <item name="spinnerboder">#857C7C</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
+
+    <!-- Amoled dark mode application theme. -->
+    <style name="Amoledtheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="backgroundcolor">#000000</item>
+        <item name="textcolor">#ffffff</item>
+        <item name="tintcolor">#ffffff</item>
+        <item name="shareicon">#000000</item>
+        <item name="spinnerboder">#857C7C</item>
+        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
+    </style>
 
     <style name="expression_btn">
         <item name="android:layout_width">0dp</item>
@@ -31,6 +65,11 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@drawable/text_btn_bg</item>
 
+    </style>
+
+    <style name="WindowAnimationTransition">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
 </resources>

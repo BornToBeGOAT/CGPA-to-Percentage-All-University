@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_calculator_activity.*
@@ -14,14 +13,22 @@ import java.math.RoundingMode
 class calculator_activity : AppCompatActivity() {
 
     private lateinit var mAdview2: AdView
+    private lateinit var sharedpref: Sharedpref
     override fun onCreate(savedInstanceState: Bundle?) {
+        sharedpref = Sharedpref(this)
+
+        if (sharedpref.loadNightMode()) {
+            setTheme(R.style.Darktheme)
+        } else if (sharedpref.loadAmoledMode()) {
+            setTheme(R.style.Amoledtheme)
+        } else {
+            setTheme(R.style.AppTheme)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator_activity)
 
         ///////////for ads////////////////////
         MobileAds.initialize(this) {}
-//        val adview = AdView(this)
-//        adview.adSize = AdSize.SMART_BANNER
         mAdview2 = findViewById(R.id.adMob2)
         val adRequest =
             AdRequest.Builder().build()
